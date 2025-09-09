@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sneaker Store
 
-## Getting Started
+Projeto Frontend de uma loja de Tênis esportivos usando next.js e Tailwind CSS
 
-First, run the development server:
+---
+
+## Tecnologias usadas
+
+
+- **Next.js** — framework React para aplicações web com renderização híbrida (SSR/SSG) e otimizações automáticas.
+- **Tailwind CSS** — utilitários de CSS para estilização rápida e responsiva.
+- **lucide-react** — biblioteca de ícones.
+- **Node.js ** — gerenciador de pacotes.
+
+
+
+## Pré-requisitos
+
+- Node.js (versão recomendada: >= 18)
+- npm, pnpm ou yarn
+
+---
+
+## Instalação
+
+Na raiz do projeto, rode:
+
+```bash
+# npm install
+```
+
+---
+
+## Rodar no navegador
+
+Para iniciar o servidor:
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
+# ou
 pnpm dev
-# or
+# ou
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra http://localhost:3000 no navegador para ver a aplicação.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+O arquivo principal da página e o  `app/page.tsx`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Tailwind
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- O efeito hover dos cards, foi feito apenas colocando  `hover:scale-105`:
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Lucide
+
+
+- **Lucide**: os ícones são usados como componentes React, por exemplo:
+
+```jsx
+import { ShoppingCart } from 'lucide-react';
+
+<ShoppingCart size={20} />
+```
+
+---
+
+## Documentações
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS](https://tailwindcss.com/docs)
+- [lucide icon set](https://lucide.dev)
+
+---
+
+
+## Funcionalidades `SneakerStore`()
+
+- **'use client'** — declara o arquivo como Client Component (necessário para usar o `useState`).
+- **Barra de busca (`useState`)** — guarda o termo digitado no input (`searchTerm`).
+- **Filtragem** — memoriza o resultado com `useMemo` para evitar recalcular em toda renderização:
+
+```js
+const filteredSneakers = useMemo(() =>
+  sneakers.filter(s => s.name.toLowerCase().includes(searchTerm.toLowerCase())),
+  [searchTerm]
+);
+```
